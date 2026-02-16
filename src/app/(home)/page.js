@@ -1,10 +1,15 @@
-import Header from "../../../components/Header";
+
+import Features from "./components/Features";
+import Hero from "./components/Hero";
+import WhyChooseUs from "./components/WhyChooseUs";
 
 
 export default function Home() {
   return (
    <>
-    <Header/>
+    <Hero/>
+    <Features/>
+    <WhyChooseUs/>
    </>
   );
 }
