@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-/* <<<<<<< HEAD */
   --background: #030712;
   --foreground: #f9fafb;
 }
@@ -13,7 +12,12 @@ body {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-outfit), sans-serif;
 }
 
@@ -63,13 +67,16 @@ body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #030712;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #1f2937;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
 }
@@ -80,8 +87,7 @@ body {
   color: white;
 }
 
-/* Smooth transitions for all interactive elements */
-a, button {
+a,
+button {
   transition: all 0.2s ease;
-/* >>>>>>> eaa114ddb85ecf78f06c85700a873ea3cce72676 */
 }

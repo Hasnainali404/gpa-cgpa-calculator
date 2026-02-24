@@ -82,7 +82,7 @@ export default function Header() {
               {userMenu && (
                 <div className="absolute right-0 mt-2 w-40 bg-gray-900 border border-gray-800 rounded-lg shadow-lg z-50">
                   <Link
-                    href="/calculator"
+                    href="/calculator-deshbord"
                     className="block px-4 py-2 text-gray-300 hover:bg-gray-800 hover:text-blue-400 transition"
                   >
                     Profile
@@ -148,7 +148,7 @@ export default function Header() {
                 </button>
               </div>
               <Link
-                href="/calculator"
+                href="/calculator-deshbord"
                 className="block mt-2 px-2 py-2 text-gray-300 hover:bg-gray-800 hover:text-blue-400 rounded transition"
               >
                 Profile
