@@ -36,7 +36,7 @@ export default function Signup() {
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-          
+
           {/* Name */}
           <div>
             <label className="text-gray-300 text-sm">Full Name</label>
