@@ -71,7 +71,7 @@ export default function SummaryCard({ semesters }) {
                 {/* Motivational Tip */}
                 <div className="mt-8 p-4 bg-blue-500/5 rounded-xl border border-blue-500/10">
                     <p className="text-xs text-gray-400 italic leading-relaxed">
-                        "Education is the most powerful weapon which you can use to change the world."
+                        &quot;Education is the most powerful weapon which you can use to change the world.&quot;
                         <span className="block mt-1 font-semibold text-gray-500">— Nelson Mandela</span>
                     </p>
                 </div>

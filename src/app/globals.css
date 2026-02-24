@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
   --background: #030712;
   --foreground: #f9fafb;
 }
@@ -42,7 +42,6 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-=======
   --font-inter: "Inter", sans-serif;
 }
 
@@ -84,5 +83,5 @@ body {
 /* Smooth transitions for all interactive elements */
 a, button {
   transition: all 0.2s ease;
->>>>>>> eaa114ddb85ecf78f06c85700a873ea3cce72676
+/* >>>>>>> eaa114ddb85ecf78f06c85700a873ea3cce72676 */
 }
