@@ -2,6 +2,8 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import LoadingBar from "../../components/LoadingBar";
+import { Suspense } from "react";
 
 // Professional typography: Inter for body, Outfit for headings
 const inter = Inter({
@@ -27,6 +29,9 @@ export default function RootLayout({ children }) {
         cz-shortcut-listen="true"
         className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-gray-950 text-white min-h-screen`}
       >
+        <Suspense fallback={null}>
+          <LoadingBar />
+        </Suspense>
         <Header />
         {children}
         <Footer />

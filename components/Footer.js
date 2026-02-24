@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Twitter,
   Linkedin,
   Github,
+  BookOpen,
 } from "lucide-react";
 
 export default function Footer() {
@@ -32,10 +30,10 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-gray-900 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none flex-1"
+                className="bg-gray-900 px-2 py-2 text-sm text-white placeholder-gray-500 outline-none flex-1"
               />
-              <button className="bg-blue-600 hover:bg-blue-700 px-5 text-sm font-medium transition">
-                Subscribe
+              <button className="bg-blue-600 hover:bg-blue-700 px-3 py-2 text-sm font-medium transition cursor-pointer">
+                Sub
               </button>
             </div>
           </div>
@@ -57,8 +55,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-blue-400 transition">
-                  Contact
+                <Link href="/formula" className="text-gray-400 hover:text-blue-400 transition">
+                  Formula
                 </Link>
               </li>
               <li>
@@ -90,38 +88,24 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Quick Info / Social */}
           <div>
             <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">
-              Contact
+              Stay Connected
             </h3>
-
-            <div className="space-y-4 text-gray-400 text-sm">
-              <div className="flex items-center gap-3 hover:text-blue-400 transition">
-                <Mail size={16} />
-                support@gpacgpa.com
-              </div>
-
-              <div className="flex items-center gap-3 hover:text-blue-400 transition">
-                <Phone size={16} />
-                +92 300 1234567
-              </div>
-
-              <div className="flex items-center gap-3 hover:text-blue-400 transition">
-                <MapPin size={16} />
-                Pakistan
-              </div>
-            </div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              Empowering students with precise calculation tools. Follow our journey for more updates.
+            </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mt-6">
-              <a className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+            <div className="flex gap-4">
+              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
                 <Twitter size={18} />
               </a>
-              <a className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
                 <Linkedin size={18} />
               </a>
-              <a className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
                 <Github size={18} />
               </a>
             </div>
