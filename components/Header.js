@@ -3,20 +3,15 @@
 import Link from "next/link";
 import { Menu, User, LogOut, ChevronDown, Settings, LayoutDashboard, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { useAuth } from "../context/AuthContext";
 
 export default function Header() {
+  const { user, logout } = useAuth();
   const [open, setOpen] = useState(false); // mobile menu
   const [userMenu, setUserMenu] = useState(false); // profile dropdown
-  const [user, setUser] = useState(null);
   const dropdownRef = useRef(null);
 
-  // Check login status
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-
     // Close dropdown on click outside
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -28,9 +23,7 @@ export default function Header() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    window.location.href = "/signup"; // redirect to signup
+    logout();
   };
 
   return (
@@ -75,25 +68,25 @@ export default function Header() {
         {/* Desktop CTA / Profile */}
         <div className="hidden md:flex items-center gap-4 relative" ref={dropdownRef}>
           {!user ? (
-            <div className="flex items-center gap-4">
+            <>
               <Link
-                href="/signup"
-                className="text-gray-400 hover:text-white text-sm font-medium transition"
+                href="/login"
+                className="text-gray-400 hover:text-white text-sm font-medium transition-colors duration-200"
               >
                 Log In
               </Link>
               <Link
                 href="/signup"
-                className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95"
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-full transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 active:scale-95"
               >
                 Get Started
               </Link>
-            </div>
+            </>
           ) : (
             <div className="relative">
               <button
                 onClick={() => setUserMenu(!userMenu)}
-                className="flex items-center gap-3 bg-gray-900/50 border border-gray-800 pl-2 pr-4 py-1.5 rounded-full hover:bg-gray-800/80 hover:border-gray-700 transition-all group"
+                className="flex cursor-pointer items-center gap-3 bg-gray-900/50 border border-gray-800 pl-2 pr-4 py-1.5 rounded-full hover:bg-gray-800/80 hover:border-gray-700 transition-all group"
               >
                 <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold ring-2 ring-gray-950 group-hover:ring-blue-500/30 transition">
                   {user.name.charAt(0).toUpperCase()}
@@ -130,7 +123,7 @@ export default function Header() {
                   <div className="mt-2 pt-2 border-t border-gray-800">
                     <button
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-3 py-2.5 text-red-400 hover:bg-red-500/10 rounded-xl transition cursor-pointer"
+                      className="w-full  flex items-center gap-3 px-3 py-2.5 text-red-400 hover:bg-red-500/10 rounded-xl transition cursor-pointer"
                     >
                       <LogOut size={18} />
                       <span className="text-sm font-medium">Sign Out</span>
@@ -182,7 +175,7 @@ export default function Header() {
             {!user ? (
               <div className="flex flex-col gap-4">
                 <Link
-                  href="/signup"
+                  href="/login"
                   onClick={() => setOpen(false)}
                   className="w-full py-3 px-6 text-center text-gray-300 font-medium hover:text-white transition"
                 >

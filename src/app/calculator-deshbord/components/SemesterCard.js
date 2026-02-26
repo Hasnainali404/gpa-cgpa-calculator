@@ -38,7 +38,7 @@ export default function SemesterCard({
                     {/* Add Course Button */}
                     <button
                         onClick={onAddCourse}
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-lg shadow-blue-900/20 active:scale-95"
+                        className="flex cursor-pointer items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-lg shadow-blue-900/20 active:scale-95"
                     >
                         <Plus size={16} />
                         <span>Add Course</span>
@@ -47,7 +47,7 @@ export default function SemesterCard({
                     {/* Delete Semester Button */}
                     <button
                         onClick={onDeleteSemester}
-                        className="flex items-center justify-center p-2 text-gray-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-all"
+                        className="flex cursor-pointer items-center justify-center p-2 text-gray-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-all"
                         title="Delete Semester"
                     >
                         <Trash2 size={18} />

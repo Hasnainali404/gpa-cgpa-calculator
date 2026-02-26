@@ -4,6 +4,8 @@ import "./style.css";
 import { useState, useEffect, useMemo } from "react";
 import { ArrowLeft, Plus, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../../../context/AuthContext";
 import SemesterCard from "./components/SemesterCard";
 import SummaryCard from "./components/SummaryCard";
 
@@ -53,11 +55,19 @@ const getLetterGrade = (grade) => {
  * GPADashboard Component: The main application page for managing semesters and calculating GPA/CGPA.
  */
 export default function GPADashboard() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [semesters, setSemesters] = useState([{ id: 1, courses: [] }]);
 
   // Initialize: Load data from localStorage on component mount
   useEffect(() => {
+    // Auth Check
+    if (!user && !localStorage.getItem("user")) {
+      router.push("/login");
+      return;
+    }
+
     const saved = localStorage.getItem("semesters");
     if (saved) {
       try {
@@ -67,7 +77,7 @@ export default function GPADashboard() {
       }
     }
     setMounted(true);
-  }, []);
+  }, [user, router]);
 
   // Persistence: Save semesters data to localStorage whenever it changes
   useEffect(() => {
@@ -194,7 +204,7 @@ export default function GPADashboard() {
 
             <button
               onClick={addSemester}
-              className="flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-gray-700 text-white px-6 py-3 rounded-xl transition-all shadow-lg active:scale-95 font-semibold"
+              className="flex cursor-pointer items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-gray-700 text-white px-6 py-3 rounded-xl transition-all shadow-lg active:scale-95 font-semibold"
             >
               <Plus size={20} className="text-blue-400" />
               <span>Add New Semester</span>

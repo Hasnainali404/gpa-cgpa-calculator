@@ -15,20 +15,33 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  const login = (data) => {
+    // In this prototype, we just save the user and redirect
+    const storedUser = localStorage.getItem("user");
+    const userData = storedUser ? JSON.parse(storedUser) : null;
+
+    if (userData && userData.email === data.email) {
+      setUser(userData);
+      router.push("/calculator-deshbord");
+      return true;
+    }
+    return false;
+  };
+
   const signup = (data) => {
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
-    router.push("/dashboard");
+    router.push("/calculator-deshbord");
   };
 
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    router.push("/");
+    router.push("/login");
   };
 
   return (
-    <AuthContext.Provider value={{ user, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout }}>
       {children}
     </AuthContext.Provider>
   );
