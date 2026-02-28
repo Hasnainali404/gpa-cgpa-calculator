@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import LoadingBar from "../../components/LoadingBar";
 import { AuthProvider } from "../../context/AuthContext";
 import { Suspense } from "react";
+import { Analytics } from '@vercel/analytics/next';
 
 // Professional typography: Inter for body, Outfit for headings
 const inter = Inter({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
           </Suspense>
           <Header />
           {children}
+          <Analytics />
           <Footer />
         </AuthProvider>
       </body>
