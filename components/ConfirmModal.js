@@ -68,7 +68,7 @@ export default function ConfirmModal({ isOpen, onClose, onConfirm, title, messag
                     <div className="flex flex-col sm:flex-row gap-3">
                         <button
                             onClick={onClose}
-                            className="flex-1 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl transition-all active:scale-95"
+                            className="flex-1 cursor-pointer px-6 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl transition-all active:scale-95"
                         >
                             Cancel
                         </button>
@@ -77,7 +77,7 @@ export default function ConfirmModal({ isOpen, onClose, onConfirm, title, messag
                                 onConfirm();
                                 onClose();
                             }}
-                            className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-500/25 active:scale-95 flex items-center justify-center gap-2"
+                            className="flex-1 cursor-pointer px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-500/25 active:scale-95 flex items-center justify-center gap-2"
                         >
                             <CheckCircle2 size={18} />
                             {confirmText}
