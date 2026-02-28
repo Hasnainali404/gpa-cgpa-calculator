@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../../../context/AuthContext";
 import SemesterCard from "./components/SemesterCard";
 import SummaryCard from "./components/SummaryCard";
+import ConfirmModal from "../../../components/ConfirmModal";
 
 /**
  * Grading Helper: Converts numeric marks to grade points based on a 4.0 scale.
@@ -60,6 +61,11 @@ export default function GPADashboard() {
   const [mounted, setMounted] = useState(false);
   const [semesters, setSemesters] = useState([{ id: 1, courses: [] }]);
 
+  // Confirmation Modal States
+  const [deleteId, setDeleteId] = useState(null); // ID of semester or course to delete
+  const [deleteType, setDeleteType] = useState(null); // 'semester' or 'course'
+  const [courseContext, setCourseContext] = useState(null); // semesterId for course deletion
+
   // Initialize: Load data from localStorage on component mount
   useEffect(() => {
     // Auth Check
@@ -94,7 +100,14 @@ export default function GPADashboard() {
   };
 
   const deleteSemester = (semesterId) => {
-    setSemesters(semesters.filter((s) => s.id !== semesterId));
+    setDeleteId(semesterId);
+    setDeleteType("semester");
+  };
+
+  const confirmDeleteSemester = () => {
+    setSemesters(semesters.filter((s) => s.id !== deleteId));
+    setDeleteId(null);
+    setDeleteType(null);
   };
 
   // --- Course Operations ---
@@ -121,16 +134,25 @@ export default function GPADashboard() {
   };
 
   const deleteCourse = (semesterId, courseId) => {
+    setDeleteId(courseId);
+    setCourseContext(semesterId);
+    setDeleteType("course");
+  };
+
+  const confirmDeleteCourse = () => {
     setSemesters((prev) =>
       prev.map((semester) =>
-        semester.id === semesterId
+        semester.id === courseContext
           ? {
             ...semester,
-            courses: semester.courses.filter((c) => c.id !== courseId),
+            courses: semester.courses.filter((c) => c.id !== deleteId),
           }
           : semester
       )
     );
+    setDeleteId(null);
+    setDeleteType(null);
+    setCourseContext(null);
   };
 
   const updateCourse = (semesterId, courseId, field, value) => {
@@ -241,6 +263,25 @@ export default function GPADashboard() {
           </aside>
         </div>
       </div>
+
+      {/* Confirmation Modals */}
+      <ConfirmModal
+        isOpen={deleteType === "semester"}
+        onClose={() => setDeleteType(null)}
+        onConfirm={confirmDeleteSemester}
+        title="Delete Semester"
+        message={`Are you sure you want to delete Semester ${deleteId}? This action will remove all courses within this semester.`}
+        confirmText="Delete"
+      />
+
+      <ConfirmModal
+        isOpen={deleteType === "course"}
+        onClose={() => setDeleteType(null)}
+        onConfirm={confirmDeleteCourse}
+        title="Remove Course"
+        message="Are you sure you want to remove this course from your dashboard? This cannot be undone."
+        confirmText="Remove"
+      />
     </div>
   );
 }

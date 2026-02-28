@@ -4,11 +4,13 @@ import Link from "next/link";
 import { Menu, User, LogOut, ChevronDown, Settings, LayoutDashboard, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
+import ConfirmModal from "./ConfirmModal";
 
 export default function Header() {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false); // mobile menu
   const [userMenu, setUserMenu] = useState(false); // profile dropdown
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -23,6 +25,11 @@ export default function Header() {
   }, []);
 
   const handleLogout = () => {
+    setShowLogoutModal(true);
+    setUserMenu(false);
+  };
+
+  const confirmLogout = () => {
     logout();
   };
 
@@ -69,12 +76,6 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4 relative" ref={dropdownRef}>
           {!user ? (
             <>
-              <Link
-                href="/login"
-                className="text-gray-400 hover:text-white text-sm font-medium transition-colors duration-200"
-              >
-                Log In
-              </Link>
               <Link
                 href="/signup"
                 className="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-full transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 active:scale-95"
@@ -175,13 +176,6 @@ export default function Header() {
             {!user ? (
               <div className="flex flex-col gap-4">
                 <Link
-                  href="/login"
-                  onClick={() => setOpen(false)}
-                  className="w-full py-3 px-6 text-center text-gray-300 font-medium hover:text-white transition"
-                >
-                  Log In
-                </Link>
-                <Link
                   href="/signup"
                   onClick={() => setOpen(false)}
                   className="w-full py-3 px-6 bg-blue-600 text-white font-bold rounded-xl text-center shadow-lg shadow-blue-500/20"
@@ -223,6 +217,16 @@ export default function Header() {
           </div>
         </div>
       )}
+
+      {/* Logout Confirmation Modal */}
+      <ConfirmModal
+        isOpen={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={confirmLogout}
+        title="Sign Out"
+        message="Are you sure you want to sign out of your account? Your progress is saved locally."
+        confirmText="Sign Out"
+      />
     </header>
   );
 }
