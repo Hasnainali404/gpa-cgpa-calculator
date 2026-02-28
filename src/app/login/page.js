@@ -22,7 +22,7 @@ export default function Login() {
     // Redirect if user already logged in
     useEffect(() => {
         if (user) {
-            router.push("/");
+            router.push("/calculator-deshbord");
         }
     }, [user, router]);
 
