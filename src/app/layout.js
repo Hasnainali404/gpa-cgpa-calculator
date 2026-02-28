@@ -38,10 +38,10 @@ export default function RootLayout({ children }) {
           </Suspense>
           <Header />
           {children}
-          <Analytics />
-          <SpeedInsights />
           <Footer />
         </AuthProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
