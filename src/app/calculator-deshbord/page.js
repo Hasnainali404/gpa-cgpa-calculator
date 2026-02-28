@@ -70,7 +70,7 @@ export default function GPADashboard() {
   useEffect(() => {
     // Auth Check
     if (!user && !localStorage.getItem("user")) {
-      router.push("/login");
+      router.push("/signup");
       return;
     }
 
