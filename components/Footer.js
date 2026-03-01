@@ -102,10 +102,10 @@ export default function Footer() {
               <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="https://www.linkedin.com/in/hasnainali0" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="https://github.com/Hasnainali404" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
                 <Github size={18} />
               </a>
             </div>
