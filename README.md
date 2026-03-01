@@ -2,7 +2,9 @@
 
 A modern, high-performance academic tracking application built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. This tool allows students to calculate their Semester GPA and Cumulative GPA (CGPA) with ease, offering a premium user experience and real-time data persistence.
 
-(public/preview.png)
+<p align="center">
+  <img src="public/preview.png" alt="GPA Calculator Preview" width="100%" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+</p>
 
 ## ✨ Key Features
 
