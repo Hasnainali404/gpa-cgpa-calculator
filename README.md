@@ -2,7 +2,7 @@
 
 A modern, high-performance academic tracking application built with **Next.js 16**, **React 19**, and **Tailwind CSS 4**. This tool allows students to calculate their Semester GPA and Cumulative GPA (CGPA) with ease, offering a premium user experience and real-time data persistence.
 
-![GPA Calculator Preview](public/preview.png) *(Note: Add a real preview image to public/preview.png or update this link)*
+(public/preview.png)
 
 ## ✨ Key Features
 
@@ -48,7 +48,7 @@ A modern, high-performance academic tracking application built with **Next.js 16
    ```
 
 4. **Open the app:**
-   Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+   Navigate to [https://gpaclac.vercel.app/](https://gpaclac.vercel.app/) in your browser.
 
 ## 📝 Calculation Formulas
 
