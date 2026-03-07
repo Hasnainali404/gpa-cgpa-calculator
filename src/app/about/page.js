@@ -3,16 +3,10 @@
 import Link from "next/link";
 import { Info, Target, Users, Award, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function AboutPage() {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const savedUser = localStorage.getItem("user");
-        if (savedUser) {
-            setUser(JSON.parse(savedUser));
-        }
-    }, []);
+    const { user } = useAuth();
 
     return (
         <main className="min-h-screen pt-24 pb-28 relative overflow-hidden">

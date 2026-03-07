@@ -4,7 +4,9 @@ import Link from "next/link";
 import { Menu, User, LogOut, ChevronDown, Settings, LayoutDashboard, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
-import ConfirmModal from "./ConfirmModal";
+import dynamic from "next/dynamic";
+
+const ConfirmModal = dynamic(() => import("./ConfirmModal"), { ssr: false });
 
 export default function Header() {
   const { user, logout } = useAuth();

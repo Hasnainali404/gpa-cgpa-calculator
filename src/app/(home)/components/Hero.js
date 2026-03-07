@@ -3,16 +3,10 @@
 import Link from "next/link";
 import { ArrowRight, Calculator, BarChart3, GraduationCap } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useAuth } from "../../../../context/AuthContext";
 
 export default function Hero() {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const savedUser = localStorage.getItem("user");
-        if (savedUser) {
-            setUser(JSON.parse(savedUser));
-        }
-    }, []);
+    const { user } = useAuth();
 
     return (
         <section className="relative pt-24 pb-28 lg:pt-36 lg:pb-44 overflow-hidden">

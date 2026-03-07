@@ -1,6 +1,7 @@
 "use client";
 
 import { Plus, Trash2, GraduationCap } from "lucide-react";
+import { memo } from "react";
 import CourseRow from "./CourseRow";
 
 /**
@@ -13,13 +14,13 @@ import CourseRow from "./CourseRow";
  * @param {Function} props.onDeleteCourse - Callback to delete a course.
  * @param {Function} props.onDeleteSemester - Callback to delete the entire semester.
  */
-export default function SemesterCard({
+const SemesterCard = ({
     semester,
     onAddCourse,
     onUpdateCourse,
     onDeleteCourse,
     onDeleteSemester
-}) {
+}) => {
     return (
         <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-5 mb-6 shadow-xl backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500">
             {/* Header Section */}
@@ -98,3 +99,4 @@ export default function SemesterCard({
         </div>
     );
 }
+export default memo(SemesterCard);

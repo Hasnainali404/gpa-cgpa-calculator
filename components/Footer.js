@@ -1,4 +1,4 @@
-"use client";
+
 
 import Link from "next/link";
 import {
@@ -97,15 +97,14 @@ export default function Footer() {
               Empowering students with precise calculation tools. Follow our journey for more updates.
             </p>
 
-            {/* Social Icons */}
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition" aria-label="Twitter">
                 <Twitter size={18} />
               </a>
-              <a href="https://www.linkedin.com/in/hasnainali0" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="https://www.linkedin.com/in/hasnainali0" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="https://github.com/Hasnainali404" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition">
+              <a href="https://github.com/Hasnainali404" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition" aria-label="GitHub">
                 <Github size={18} />
               </a>
             </div>
@@ -113,7 +112,6 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom */}
         <div className="border-t border-gray-800 mt-12 pt-6 text-center text-gray-500 text-sm">
           © {new Date().getFullYear()} GPA&CGPA. All rights reserved.
         </div>

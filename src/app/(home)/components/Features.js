@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Shield, Zap, Layout, Save, Share2, History } from "lucide-react";
 

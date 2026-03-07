@@ -1,6 +1,7 @@
 "use client";
 
 import { Trash2 } from "lucide-react";
+import { memo } from "react";
 
 /**
  * CourseRow component handles individual course details input.
@@ -10,7 +11,7 @@ import { Trash2 } from "lucide-react";
  * @param {Function} props.onUpdate - Callback function to update course details.
  * @param {Function} props.onDelete - Callback function to delete the course.
  */
-export default function CourseRow({ course, onUpdate, onDelete }) {
+function CourseRow({ course, onUpdate, onDelete }) {
   return (
     <div className="group flex flex-col md:flex-row items-center gap-4 bg-gray-900/40 md:bg-transparent border border-gray-800/50 hover:border-blue-500/40 hover:bg-gray-800/40 transition-all duration-300 rounded-2xl p-4 md:p-2 mb-3 md:mb-1">
       {/* Course Name Input */}
@@ -80,3 +81,5 @@ export default function CourseRow({ course, onUpdate, onDelete }) {
     </div>
   );
 }
+
+export default memo(CourseRow);

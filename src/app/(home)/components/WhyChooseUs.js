@@ -1,4 +1,4 @@
-"use client";
+
 
 import { CheckCircle2, TrendingUp, Cpu, Globe } from "lucide-react";
 

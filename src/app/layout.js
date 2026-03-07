@@ -12,6 +12,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const outfit = Outfit({
@@ -23,6 +24,14 @@ const outfit = Outfit({
 export const metadata = {
   title: "GPA & CGPA Calculator | Modern Academic Tools",
   description: "Calculate your semester GPA and cumulative CGPA with our professional, easy-to-use modern calculator.",
+  keywords: ["GPA calculator", "CGPA calculator", "academic tracker", "student tools", "semester GPA"],
+  authors: [{ name: "Hasnain Ali", url: "https://github.com/Hasnainali404" }],
+  robots: "index, follow",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {

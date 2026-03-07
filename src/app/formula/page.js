@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Calculator, BookOpen, Sigma, Hash } from "lucide-react";
 

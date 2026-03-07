@@ -1,14 +1,16 @@
 "use client";
 
 import "./style.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { ArrowLeft, Plus, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../../context/AuthContext";
-import SemesterCard from "./components/SemesterCard";
-import SummaryCard from "./components/SummaryCard";
-import ConfirmModal from "../../../components/ConfirmModal";
+import dynamic from "next/dynamic";
+
+const SemesterCard = dynamic(() => import("./components/SemesterCard"), { ssr: true });
+const SummaryCard = dynamic(() => import("./components/SummaryCard"), { ssr: true });
+const ConfirmModal = dynamic(() => import("../../../components/ConfirmModal"), { ssr: false });
 
 /**
  * Grading Helper: Converts numeric marks to grade points based on a 4.0 scale.
@@ -94,25 +96,25 @@ export default function GPADashboard() {
 
   // --- Semester Operations ---
 
-  const addSemester = () => {
+  const addSemester = useCallback(() => {
     const newId = semesters.length ? Math.max(...semesters.map(s => s.id)) + 1 : 1;
     setSemesters([...semesters, { id: newId, courses: [] }]);
-  };
+  }, [semesters]);
 
-  const deleteSemester = (semesterId) => {
+  const deleteSemester = useCallback((semesterId) => {
     setDeleteId(semesterId);
     setDeleteType("semester");
-  };
+  }, []);
 
-  const confirmDeleteSemester = () => {
+  const confirmDeleteSemester = useCallback(() => {
     setSemesters(semesters.filter((s) => s.id !== deleteId));
     setDeleteId(null);
     setDeleteType(null);
-  };
+  }, [semesters, deleteId]);
 
   // --- Course Operations ---
 
-  const addCourse = (semesterId) => {
+  const addCourse = useCallback((semesterId) => {
     setSemesters((prev) =>
       prev.map((semester) =>
         semester.id === semesterId
@@ -131,15 +133,15 @@ export default function GPADashboard() {
           : semester
       )
     );
-  };
+  }, []);
 
-  const deleteCourse = (semesterId, courseId) => {
+  const deleteCourse = useCallback((semesterId, courseId) => {
     setDeleteId(courseId);
     setCourseContext(semesterId);
     setDeleteType("course");
-  };
+  }, []);
 
-  const confirmDeleteCourse = () => {
+  const confirmDeleteCourse = useCallback(() => {
     setSemesters((prev) =>
       prev.map((semester) =>
         semester.id === courseContext
@@ -153,9 +155,9 @@ export default function GPADashboard() {
     setDeleteId(null);
     setDeleteType(null);
     setCourseContext(null);
-  };
+  }, [deleteId, courseContext]);
 
-  const updateCourse = (semesterId, courseId, field, value) => {
+  const updateCourse = useCallback((semesterId, courseId, field, value) => {
     setSemesters((prev) =>
       prev.map((semester) =>
         semester.id === semesterId
@@ -168,7 +170,7 @@ export default function GPADashboard() {
           : semester
       )
     );
-  };
+  }, []);
 
   // --- Computation Layer ---
 

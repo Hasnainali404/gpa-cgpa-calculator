@@ -6,10 +6,10 @@ export default function HomeLoading() {
     return (
         <main className="max-w-7xl mx-auto px-6 pt-10">
             {/* Hero Skeleton */}
-            <div className="text-center space-y-6 mb-20 pt-20">
+            <div className="text-center space-y-6 mb-20 pt-24 min-h-[400px]">
                 <Skeleton className="h-16 w-3/4 mx-auto" />
                 <Skeleton className="h-6 w-1/2 mx-auto" />
-                <Skeleton className="h-12 w-40 mx-auto" />
+                <Skeleton className="h-14 w-40 mx-auto" />
             </div>
 
             {/* Features Grid Skeleton */}
